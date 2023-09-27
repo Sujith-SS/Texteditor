@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Editor</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+       
+    body {
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f8f8f8;
+    }
+
+    .editor {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        width: 90%;
+        padding: 20px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+
+    }
+
+    .editor h1 {
+        font-size: 36px;
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+        font-family: 'Lucida Sans Typewriter'
+    
+    }
+
+    .toolbar {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .toolbar button, .toolbar select {
+        margin: 5px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #007BFF; /* Blue */
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+        border: 1px solid #007BFF;
+        transition: background-color 0.3s ease;
+    }
+
+    .toolbar button:hover, .toolbar select:hover {
+        background-color: #0056b3; 
+    }
+
+    .content {
+        border: 1px solid #ccc;
+        min-height: 250px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 4px;
+        box-sizing: border-box;
+        width: 100%;
+        background-color: white;
+        text-align:left;
+    }
+ 
+    </style>
+</head>
+<body>
+    <div class="editor">
+        <h1>Text Editor</h1>
+        <div class="toolbar">
+            <button onclick="execCommand('bold')"><i class="fas fa-bold"></i></button>
+            <button onclick="execCommand('italic')"><i class="fas fa-italic"></i></button>
+            <button onclick="execCommand('underline')"><i class="fas fa-underline"></i></button>
+            <button onclick="execCommand('strikeThrough')"><i class="fas fa-strikethrough"></i></button>
+            <select onchange="setFontFamily(this.value)">
+                <option value="" disabled selected>Font Family</option>
+                <option value="Arial">Arial</option>
+                <option value="Arial Black">Arial Black</option>
+                <option value="Arial Narrow">Arial Narrow</option>
+                <option value="Book Antiqua">Book Antiqua</option>
+                <option value="Bookman">Bookman</option>
+                <option value="Bradley Hand">Bradley Hand</option>
+                <option value="Brush Script MT">Brush Script MT</option>
+                <option value="Cambria">Cambria</option>
+                <option value="Century Gothic">Century Gothic</option>
+                <option value="Chalkduster">Chalkduster</option>
+                <option value="Comic Sans">Comic Sans</option>
+                <option value="Comic Sans MS">Comic Sans MS</option>
+                <option value="Consolas">Consolas</option>
+                <option value="Copperplate">Copperplate</option>
+                <option value="Copperplate Gothic Bold">Copperplate Gothic Bold</option>
+                <option value="Courier">Courier</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Didot">Didot</option>
+                <option value="Futura">Futura</option>
+                <option value="Garamond">Garamond</option>
+                <option value="Geneva">Geneva</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Gill Sans">Gill Sans</option>
+                <option value="Helvetica">Helvetica</option>
+                <option value="Helvetica Neue">Helvetica Neue</option>
+                <option value="Impact">Impact</option>
+                <option value="Lucida Console">Lucida Console</option>
+                <option value="Lucida Grande">Lucida Grande</option>
+                <option value="Lucida Sans">Lucida Sans</option>
+                <option value="Lucida Sans Typewriter">Lucida Sans Typewriter</option>
+                <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                <option value="Marker Felt">Marker Felt</option>
+                <option value="Microsoft Sans Serif">Microsoft Sans Serif</option>
+                <option value="Monaco">Monaco</option>
+                <option value="MS Sans Serif">MS Sans Serif</option>
+                <option value="MS Serif">MS Serif</option>
+                <option value="Optima">Optima</option>
+                <option value="Papyrus">Papyrus</option>
+                <option value="Palatino">Palatino</option>
+                <option value="Palatino Linotype">Palatino Linotype</option>
+                <option value="Symbol">Symbol</option>
+                <option value="Tahoma">Tahoma</option>
+                <option value="Times">Times</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Trebuchet MS">Trebuchet MS</option>
+                <option value="Verdana">Verdana</option>
+                <option value="Webdings">Webdings</option>
+                <option value="Wingdings">Wingdings</option>
+                
+            </select>
+            <select onchange="setFontSize(this.value)">
+                <option value="" disabled selected>Font Size</option>
+                <option value="8px">8</option>
+                <option value="10px">10</option>
+                <option value="12px">12</option>
+                <option value="14px">14</option>
+                <option value="16px">16</option>
+                <option value="18px">18</option>
+                <option value="20px">20</option>
+                <option value="24px">24</option>
+                <option value="28px">28</option>
+                <option value="32px">32</option>
+                <option value="35px">35</option>
+                <option value="40px">40</option>
+                <option value="45px">45</option>
+                <option value="50px">50</option>
+                
+            </select>
+        </div>
+        <div class="content" contenteditable="true"></div>
+    </div>
+
+    <script>
+        function execCommand(command, value = null) {
+            document.execCommand(command, false, value);
+        }
+
+        function setFontSize(fontSize) {
+            document.querySelector('.content').style.fontSize = fontSize;
+        }
+
+        function setFontFamily(fontFamily) {
+            document.execCommand('fontName', false, fontFamily);
+        }
+    </script>
+</body>
+</html>
