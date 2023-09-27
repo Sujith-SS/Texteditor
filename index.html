@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Editor</title>
 
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 
     <style>
-       
     body {
         font-family: 'Arial', sans-serif;
         text-align: center;
@@ -26,7 +27,7 @@
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         max-width: 800px;
-        width: 90%;
+        width: 100%;
         padding: 20px;
         box-sizing: border-box;
         border: 1px solid #ccc;
@@ -39,7 +40,7 @@
         margin-bottom: 20px;
         text-align: center;
         font-family: 'Lucida Sans Typewriter'
-    
+
     }
 
     .toolbar {
@@ -58,13 +59,13 @@
         color: white;
         cursor: pointer;
         border-radius: 5px;
-        font-size: 20px;
+        font-size: 16px;
         border: 1px solid #007BFF;
         transition: background-color 0.3s ease;
     }
 
     .toolbar button:hover, .toolbar select:hover {
-        background-color: #0056b3; 
+        background-color: #0056b3;
     }
 
     .content {
@@ -78,10 +79,10 @@
         background-color: white;
         text-align:left;
     }
-
+    /*this is for mobile devices*/
     @media only screen and (max-width: 425px){
         .toolbar button, .toolbar select {
-            padding: 2px 6px;
+            padding: 2px 3px;
             font-size: 7px;
         }
         .content {
@@ -98,14 +99,14 @@
             font-size: 12px;
         }
         .content {
-            min-height: 300px;
+            min-height: 200px;
             font-size: 12px;
         }
         .editor h1 {
             font-size: 28px;
         }
     }
-
+    /*this is for tablet and ipad*/
     @media screen and (min-width: 481px) and (max-width: 768px){
         .toolbar button, .toolbar select {
             padding: 8px 7px;
@@ -119,7 +120,7 @@
         }
     }
 
-        
+
     </style>
 </head>
 <body>
@@ -180,7 +181,7 @@
                 <option value="Verdana">Verdana</option>
                 <option value="Webdings">Webdings</option>
                 <option value="Wingdings">Wingdings</option>
-                
+
             </select>
             <select onchange="setFontSize(this.value)">
                 <option value="" disabled selected>Font Size</option>
@@ -198,7 +199,7 @@
                 <option value="40px">40</option>
                 <option value="45px">45</option>
                 <option value="50px">50</option>
-                
+
             </select>
         </div>
         <div class="content" contenteditable="true"></div>
