@@ -78,7 +78,48 @@
         background-color: white;
         text-align:left;
     }
- 
+
+    @media only screen and (max-width: 425px){
+        .toolbar button, .toolbar select {
+            padding: 2px 3px;
+            font-size: 7px;
+        }
+        .content {
+            min-height: 200px;
+            font-size: 12px;
+        }
+        .editor h1 {
+            font-size: 22px;
+        }
+    }
+    @media only screen and (min-width: 426px) and (max-width: 480px){
+        .toolbar button, .toolbar select {
+            padding: 2px 4px;
+            font-size: 12px;
+        }
+        .content {
+            min-height: 200px;
+            font-size: 12px;
+        }
+        .editor h1 {
+            font-size: 28px;
+        }
+    }
+    /*this is for tablet and ipad*/
+    @media screen and (min-width: 481px) and (max-width: 768px){
+        .toolbar button, .toolbar select {
+            padding: 8px 7px;
+            font-size: 13px;
+        }
+        .content {
+            min-height: 250px;
+        }
+        .editor h1 {
+            font-size: 32px;
+        }
+    }
+
+        
     </style>
 </head>
 <body>
